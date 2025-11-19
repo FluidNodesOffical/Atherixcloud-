@@ -1,80 +1,88 @@
 # AtherixCloud Advanced Status Bot
 
-A powerful Discord bot designed to monitor AtherixCloud services, including Convoy Panel and Minecraft Panel.  
-Features a full admin system, auto-refreshing status messages, 20+ commands, and persistent data storage.
+A lightweight, fast Discord bot designed to monitor AtherixCloud services (Convoy & MC Panel).  
+This version is optimized into **only 3 files**:
+
+```
+index.js
+package.json
+.env
+```
+
+Clean, compact, and easy to deploy.
 
 ---
 
 ## 🚀 Features
 
-- Real-time monitoring for:
-  - Convoy Panel
-  - Minecraft Panel
-- Auto-refresh every **5 seconds** (customizable)
-- Admin system with:
-  - Add/remove admins
-  - Main protected admin (cannot be removed): `1163301364009541764`
-- 20+ admin & utility commands
-- Slash commands + prefix commands
-- Automatic JSON data storage:
-  - `data/admins.json`
-  - `data/sites.json`
-  - `data/state.json`
-- Full embed-based status messages
-- Clean file structure
-- Error logging & retry system
+- Auto-refresh panel status every 5 seconds
+- Monitors:
+  - Convoy Panel (https://vms.saturnnode.qzz.io)
+  - MC Panel (https://fp.cherrymc.fun)
+- Admin system (add/remove admins)
+- Main protected admin:
+  ```
+  1163301364009541764
+  ```
+- Slash + Prefix commands
+- Full embed responses
+- Easy configuration
+- Zero bloat — only 3 files needed
 
 ---
 
-## 📁 Project Structure
+## 📦 Files
 
-```
-.
-├── index.js
-├── package.json
-├── .env.example
-├── commands/
-├── events/
-├── handlers/
-└── data/
-```
+### **index.js**
+The full bot logic:
+- Status checker  
+- Embed system  
+- Admin system  
+- Commands  
+- Auto-refresh  
+- Update loop  
+
+### **package.json**
+Node dependencies:
+- discord.js
+- node-fetch
+- dotenv
+
+### **.env**
+Bot configuration.
 
 ---
 
-## 🛠 Installation
+## ⚙️ Setup Guide
 
-### 1. Install Node.js
-
+### **1. Install Node.js**
 ```bash
 sudo apt update
 sudo apt install -y nodejs npm
 ```
 
-### 2. Extract or Clone
+---
 
-```bash
-unzip atherix-status-bot.zip
-cd atherix-status-bot
-```
-
-### 3. Install Dependencies
-
+### **2. Install Bot Dependencies**
 ```bash
 npm install
 ```
 
 ---
 
-## ⚙️ Configuration
-
-### Create `.env`
-
+### **3. Configure the Bot**
+Copy template (if needed):
 ```bash
 cp .env.example .env
+```
+
+Open `.env`:
+
+```bash
 nano .env
 ```
 
-Fill in:
+Fill:
 
 ```
 TOKEN=YOUR_BOT_TOKEN
@@ -82,20 +90,21 @@ CHANNEL_ID=STATUS_CHANNEL_ID
 REFRESH_INTERVAL=5000
 ```
 
+Save with:
+**CTRL + X → Y → ENTER**
+
 ---
 
-## ▶️ Running the Bot
+## ▶️ Starting the Bot
 
-### Start Normally:
-
+### Normal:
 ```bash
 node index.js
 ```
 
-### Recommended – PM2 Auto Restart:
-
+### Recommended (Auto-Restart):
 ```bash
-npm install pm2 -g
+npm install -g pm2
 pm2 start index.js --name "atherix-status"
 pm2 save
 pm2 startup
@@ -103,95 +112,62 @@ pm2 startup
 
 ---
 
-## 👑 Admin System
-
-### Main Admin (protected):
-```
-1163301364009541764
-```
+## 👑 Admin Commands
 
 ### Add Admin
-
-Slash:
 ```
-/status addadmin <user_id>
-```
-
-Prefix:
-```
+/addadmin <user_id>
 !addadmin <user_id>
 ```
 
 ### Remove Admin
-
-Slash:
 ```
-/status removeadmin <user_id>
-```
-
-Prefix:
-```
+/removeadmin <user_id>
 !removeadmin <user_id>
 ```
 
 ### List Admins
-
 ```
-/status admins
-```
-
----
-
-## 🌐 Monitor Commands
-
-### Add Site
-
-Slash:
-```
-/status addsite <url>
+/admins
 ```
 
-Prefix:
+Main admin **cannot be removed**:
 ```
-!addsite <url>
-```
-
-### Remove Site
-
-```
-/status removesite <url>
-```
-
-### View Sites
-
-```
-/status sites
+1163301364009541764
 ```
 
 ---
 
-## 📊 Status Commands
+## 🌐 Status Commands
 
 ```
+/status
 /status refresh
 /status enable
 /status disable
+```
+
+---
+
+## 🧭 Utility Commands
+
+```
 /ping
 /uptime
-/status restart
+/help
 ```
 
 ---
 
 ## 📝 Notes
 
-- Bot auto-checks sites every X seconds (default 5s).
-- Status messages are **full embed style**.
-- All data is persistent in `/data` folder.
+- This version is designed to be extremely simple.
+- All messages are embeds.
+- Everything runs inside **index.js**.
+- No external folders needed.
+- Perfect for small VPS / low-resource systems.
 
 ---
 
-## ❤️ Support
-
-AtherixCloud Advanced Status Bot  
-Created for premium panel monitoring and uptime tracking.
+## ❤️ AtherixCloud Status Bot
+Fast, minimal, professional monitoring.
